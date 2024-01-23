@@ -132,6 +132,31 @@ ros2 topic pub -1 serial_data std_msgs/msg/String "{data: "A"}"
 ros2 node info /serial_reader
 ```
 
+### For Docker
+
+docker compose file for using serial ports on docker container
+
+```bash
+version: "3.9"
+services:
+ ros2:
+   build: .
+   # restart: no
+   ports: 
+     - "3332:3332"
+   volumes:
+     - /home/ros:/home/ros
+   devices:
+     - /dev/ttyACM0:/dev/ttyACM0
+   tty: true
+```
+
+**Allow host permissions**
+
+```bash
+sudo chmod 666 /dev/ttyACM0
+```
+
 ### Basic Arduino Code to Read and Write Serial Data
 
 ```bash
