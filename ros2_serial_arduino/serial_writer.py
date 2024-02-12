@@ -19,7 +19,7 @@ class SerialWriterNode(Node):
 
         self.data_subscriber = self.create_subscription(String, subscribe_topic, self.write_serial_data, 10)
 
-        self.get_logger().info(f"Serial writer node has started. Subscribeing to: {subscribe_topic}")
+        self.get_logger().info(f"Serial writer node has started. Subscribing to: {subscribe_topic}")
 
     def read_parameters(self):
         serial_port = self.get_parameter("serial_port").get_parameter_value().string_value
